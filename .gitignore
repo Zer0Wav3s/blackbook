@@ -1,0 +1,14 @@
+.DS_Store
+*.pyc
+__pycache__/
+.env
+node_modules/
+.venv/
+council-reports/
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+/tests/

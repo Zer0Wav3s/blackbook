@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1536 512" width="1536" height="512">
+  <defs>
+    <radialGradient id="bg-glow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#1a1a2e" />
+      <stop offset="100%" stop-color="#0d1117" />
+    </radialGradient>
+    <radialGradient id="gold-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D4A017" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#D4A017" stop-opacity="0" />
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <filter id="soft-glow">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1536" height="512" fill="url(#bg-glow)" />
+  
+  <!-- Ambient glow -->
+  <ellipse cx="768" cy="256" rx="400" ry="200" fill="url(#gold-glow)" />
+  
+  <!-- Central brain icon - circuit/neural style -->
+  <g transform="translate(768, 256)" filter="url(#glow)">
+    <!-- Brain outline - left hemisphere -->
+    <path d="M-8,-70 C-45,-70 -65,-50 -70,-20 C-75,10 -65,35 -50,50 C-40,60 -25,65 -8,65" 
+          fill="none" stroke="#D4A017" stroke-width="3" />
+    <!-- Brain outline - right hemisphere -->
+    <path d="M8,-70 C45,-70 65,-50 70,-20 C75,10 65,35 50,50 C40,60 25,65 8,65" 
+          fill="none" stroke="#D4A017" stroke-width="3" />
+    <!-- Brain stem -->
+    <line x1="0" y1="65" x2="0" y2="85" stroke="#D4A017" stroke-width="3" />
+    
+    <!-- Circuit traces from brain -->
+    <path d="M-70,-20 L-110,-20 L-110,-50" fill="none" stroke="#D4A017" stroke-width="2" opacity="0.7" />
+    <path d="M-65,35 L-100,35 L-130,60" fill="none" stroke="#D4A017" stroke-width="2" opacity="0.7" />
+    <path d="M70,-20 L110,-20 L110,-50" fill="none" stroke="#D4A017" stroke-width="2" opacity="0.7" />
+    <path d="M65,35 L100,35 L130,60" fill="none" stroke="#D4A017" stroke-width="2" opacity="0.7" />
+    <path d="M-45,-70 L-45,-100 L-80,-100" fill="none" stroke="#D4A017" stroke-width="2" opacity="0.6" />
+    <path d="M45,-70 L45,-100 L80,-100" fill="none" stroke="#D4A017" stroke-width="2" opacity="0.6" />
+    <path d="M0,85 L0,110" fill="none" stroke="#D4A017" stroke-width="2" opacity="0.6" />
+    <path d="M0,85 L-30,110" fill="none" stroke="#D4A017" stroke-width="2" opacity="0.5" />
+    <path d="M0,85 L30,110" fill="none" stroke="#D4A017" stroke-width="2" opacity="0.5" />
+    
+    <!-- Neural network nodes -->
+    <circle cx="-110" cy="-50" r="5" fill="none" stroke="#D4A017" stroke-width="2" opacity="0.8" />
+    <circle cx="-130" cy="60" r="5" fill="none" stroke="#D4A017" stroke-width="2" opacity="0.8" />
+    <circle cx="110" cy="-50" r="5" fill="none" stroke="#D4A017" stroke-width="2" opacity="0.8" />
+    <circle cx="130" cy="60" r="5" fill="none" stroke="#D4A017" stroke-width="2" opacity="0.8" />
+    <circle cx="-80" cy="-100" r="5" fill="none" stroke="#D4A017" stroke-width="2" opacity="0.7" />
+    <circle cx="80" cy="-100" r="5" fill="none" stroke="#D4A017" stroke-width="2" opacity="0.7" />
+    <circle cx="0" cy="110" r="4" fill="none" stroke="#D4A017" stroke-width="2" opacity="0.6" />
+    <circle cx="-30" cy="110" r="3" fill="none" stroke="#D4A017" stroke-width="2" opacity="0.5" />
+    <circle cx="30" cy="110" r="3" fill="none" stroke="#D4A017" stroke-width="2" opacity="0.5" />
+    
+    <!-- Extended constellation nodes -->
+    <path d="M-110,-50 L-150,-70" fill="none" stroke="#D4A017" stroke-width="1.5" opacity="0.4" />
+    <circle cx="-150" cy="-70" r="3" fill="#D4A017" opacity="0.4" />
+    <path d="M110,-50 L150,-70" fill="none" stroke="#D4A017" stroke-width="1.5" opacity="0.4" />
+    <circle cx="150" cy="-70" r="3" fill="#D4A017" opacity="0.4" />
+    <path d="M-80,-100 L-120,-120" fill="none" stroke="#D4A017" stroke-width="1.5" opacity="0.3" />
+    <circle cx="-120" cy="-120" r="2.5" fill="#D4A017" opacity="0.3" />
+    <path d="M80,-100 L120,-120" fill="none" stroke="#D4A017" stroke-width="1.5" opacity="0.3" />
+    <circle cx="120" cy="-120" r="2.5" fill="#D4A017" opacity="0.3" />
+    <path d="M-130,60 L-170,80" fill="none" stroke="#D4A017" stroke-width="1.5" opacity="0.35" />
+    <circle cx="-170" cy="80" r="3" fill="#D4A017" opacity="0.35" />
+    <path d="M130,60 L170,80" fill="none" stroke="#D4A017" stroke-width="1.5" opacity="0.35" />
+    <circle cx="170" cy="80" r="3" fill="#D4A017" opacity="0.35" />
+    
+    <!-- Tool symbols at key nodes -->
+    <!-- Gear at top-left node -->
+    <g transform="translate(-110,-50)" opacity="0.8">
+      <circle cx="0" cy="0" r="8" fill="none" stroke="#D4A017" stroke-width="1.5" />
+      <circle cx="0" cy="0" r="3" fill="none" stroke="#D4A017" stroke-width="1" />
+    </g>
+    <!-- Lightning at top-right node -->
+    <g transform="translate(110,-50)" opacity="0.8">
+      <path d="M2,-9 L-3,-1 L1,-1 L-2,9 L4,0 L0,0 Z" fill="#D4A017" />
+    </g>
+    <!-- Compass at bottom-left -->
+    <g transform="translate(-130,60)" opacity="0.8">
+      <circle cx="0" cy="0" r="8" fill="none" stroke="#D4A017" stroke-width="1.5" />
+      <line x1="0" y1="-6" x2="0" y2="6" stroke="#D4A017" stroke-width="1" />
+      <line x1="-6" y1="0" x2="6" y2="0" stroke="#D4A017" stroke-width="1" />
+    </g>
+    <!-- Magnifying glass at bottom-right -->
+    <g transform="translate(130,60)" opacity="0.8">
+      <circle cx="-2" cy="-2" r="6" fill="none" stroke="#D4A017" stroke-width="1.5" />
+      <line x1="2" y1="2" x2="8" y2="8" stroke="#D4A017" stroke-width="2" />
+    </g>
+    
+    <!-- Inner brain folds (sulci) -->
+    <path d="M-30,-40 C-15,-35 -10,-20 -20,0" fill="none" stroke="#D4A017" stroke-width="1.5" opacity="0.5" />
+    <path d="M30,-40 C15,-35 10,-20 20,0" fill="none" stroke="#D4A017" stroke-width="1.5" opacity="0.5" />
+    <path d="M-15,10 C-5,20 5,20 15,10" fill="none" stroke="#D4A017" stroke-width="1.5" opacity="0.4" />
+  </g>
+  
+  <!-- Speed lines - left side -->
+  <g filter="url(#soft-glow)">
+    <line x1="280" y1="230" x2="380" y2="230" stroke="#D4A017" stroke-width="1.5" opacity="0.3" />
+    <line x1="300" y1="260" x2="420" y2="260" stroke="#D4A017" stroke-width="1" opacity="0.25" />
+    <line x1="320" y1="290" x2="400" y2="290" stroke="#D4A017" stroke-width="1.5" opacity="0.2" />
+  </g>
+  
+  <!-- Speed lines - right side -->
+  <g filter="url(#soft-glow)">
+    <line x1="1156" y1="230" x2="1256" y2="230" stroke="#D4A017" stroke-width="1.5" opacity="0.3" />
+    <line x1="1116" y1="260" x2="1236" y2="260" stroke="#D4A017" stroke-width="1" opacity="0.25" />
+    <line x1="1136" y1="290" x2="1216" y2="290" stroke="#D4A017" stroke-width="1.5" opacity="0.2" />
+  </g>
+  
+  <!-- Sparkle particles -->
+  <circle cx="350" cy="200" r="2" fill="#D4A017" opacity="0.5" />
+  <circle cx="1180" cy="210" r="1.5" fill="#D4A017" opacity="0.4" />
+  <circle cx="420" cy="300" r="1.5" fill="#D4A017" opacity="0.35" />
+  <circle cx="1120" cy="310" r="2" fill="#D4A017" opacity="0.45" />
+  <circle cx="500" cy="180" r="1" fill="#D4A017" opacity="0.3" />
+  <circle cx="1050" cy="180" r="1" fill="#D4A017" opacity="0.3" />
+  <circle cx="450" cy="340" r="1.5" fill="#D4A017" opacity="0.25" />
+  <circle cx="1080" cy="340" r="1.5" fill="#D4A017" opacity="0.25" />
+  
+  <!-- Noise texture overlay (subtle) -->
+  <filter id="noise">
+    <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/>
+    <feColorMatrix type="saturate" values="0"/>
+  </filter>
+  <rect width="1536" height="512" filter="url(#noise)" opacity="0.03" />
+</svg>

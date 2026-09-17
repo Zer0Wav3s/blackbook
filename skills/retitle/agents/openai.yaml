@@ -1,0 +1,4 @@
+interface:
+  display_name: "Retitle"
+  short_description: "Name the current chat from its recent context"
+  default_prompt: "Use $retitle to rename this conversation based on its recent substantive context."
