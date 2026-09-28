@@ -22,7 +22,10 @@ Weigh preparation, network time, interpretation, and verification against doing
 the task directly. Use code for exact rules, lookups, parsing, and arithmetic;
 use deeper reasoning or more evidence for open-ended or unsupported conclusions.
 Do not call Jev to decide whether to call Jev, or insert it into every agent step.
-Briefly explain its task-specific contribution when using it.
+Briefly explain its task-specific contribution when using it. The split that pays:
+generative models produce text, Jev routes, scores, approves, or escalates, code
+executes. When a chosen action needs text (a form value, a summary of a long
+source before classification), a small generative model fills it.
 
 For occasional assistance, keep execution task-local. For an application, preserve
 the user's stack and scope. A skill does not install middleware or guarantee tool
@@ -66,6 +69,12 @@ with explicit premises and ignore irrelevant branch answers. Questions cannot se
 each other's results. A later request is justified when an earlier answer is needed
 to fetch evidence, construct state, or define candidates. Respect current limits.
 
+Build options from what exists now and rebuild them after each state change; a
+stale list chooses from yesterday's menu. Choice accepts up to 255 options. For
+larger sets, drop exact mismatches in code, Score the rest, then Choose among the
+shortlist. Never truncate a candidate list to a fixed slice (most recent, first
+N): older matches silently become no-match answers.
+
 ### Adaptable examples
 
 | Situation | State and questions | How to use the result |
@@ -73,6 +82,8 @@ to fetch evidence, construct state, or define candidates. Respect current limits
 | Rank bug-investigation evidence | Observed failure, expected behavior, candidate IDs/paths/excerpts. One Score per candidate: unrelated; related component; directly implements/calls the implicated operation. | Inspect strongest candidates, follow references, reproduce/test. Keep remaining candidates; low scores do not prove irrelevance. |
 | Choose a tool or skill | Immediate objective, observations, constraints, actual catalog with required inputs and limitations. Choice among suitable capabilities plus none. Use per-item Scores if several may help. | Read selected instructions, validate arguments and permissions. Fetch fuller shortlisted descriptions only when needed. Skip classification for an obvious or user-required tool. |
 | Check answer support | Claims, original cited excerpts, source IDs and qualifications. Choice per claim: fully supported, partly supported, contradicted, insufficient evidence. | Inspect flagged claims and original sources, correct wording or gather evidence. Check user-requirement coverage separately from source support. |
+| Dispatch work between agents | Goal, completed work with actual findings and gaps, workers available now. Choice among those workers plus review for unclear or finished work. | Below the threshold, route to review. Write the handoff (queue file, task record) before a worker consumes it; prevent duplicate processing. |
+| Prune agent context | Current objective, one entry per tool call or message with a short excerpt. Score per entry: irrelevant; background; needed for the next step. | Drop the lowest entries, keep references to dropped ones so they can be reloaded. Never drop unresolved errors or user instructions on a score alone. |
 
 These are starting points, not domain limits or mandatory schemas. A ranking can
 prioritize inspection but must not silently compromise an exhaustive review.
@@ -258,9 +269,19 @@ if __name__ == '__main__':
 
 Start unfamiliar workloads with a small representative batch. Choose uncertainty
 thresholds based on consequences and observed domain performance; don't copy demo
-thresholds as policy. Gather evidence, broaden inspection, or escalate uncertain
-cases. Ignore uncertainty on unused branches; equally useful options need not block
-a harmless selection. Typed output guarantees structure, not truth.
+thresholds as policy. To calibrate, store each raw answer with its confidence next
+to the final outcome (human decision, model label, verified result), then pick the
+threshold where agreement meets the target. Gather evidence, broaden inspection, or
+escalate uncertain cases. Ignore uncertainty on unused branches; equally useful
+options need not block a harmless selection. Typed output guarantees structure, not
+truth. When Jev selects done, check the outcome directly (file exists, message
+sent, test passed) before reporting completion.
+
+Estimate cost before large runs from input tokens per request times request count;
+Jev bills input tokens only (check the live pricing page for the current rate).
+Track cost per completed task, not per decision: a cheap call that sends work down
+the wrong branch costs more than the call. Before paying for a faster model,
+inspect repeated tool calls; collapsing redundant reads often saves more.
 
 Separate service failure from uncertain judgments. Bound any retries outside the
 runner, honor server backoff guidance, and stop on credential failure. Track usage,
